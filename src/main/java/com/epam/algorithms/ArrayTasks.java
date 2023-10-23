@@ -1,8 +1,5 @@
 package com.epam.algorithms;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 /**
  * Here are the tasks for working with the arrays.
  * <p>
@@ -14,7 +11,7 @@ public class ArrayTasks {
      * Return a String[] array that will list all the seasons of the year, starting with winter.
      */
     public String[] seasonsArray() {
-        return new String[]{"Winter", "Spring", "Summer", "Autumn"};
+        return new String[]{"winter", "spring", "summer", "autumn"};
     }
 
     /**
@@ -120,9 +117,26 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]] arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        Arrays.sort(arr, Comparator.comparingInt(a -> a.length));
-        for (int[] innerArray : arr) {
-            Arrays.sort(innerArray);
+        // Implement sorting logic for the ragged array without using Arrays.sort
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j].length > arr[j + 1].length) {
+                    // Swap arrays
+                    int[] temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                } else if (arr[j].length == arr[j + 1].length) {
+                    // If lengths are the same, compare and swap elements within the arrays
+                    for (int k = 0; k < arr[j].length; k++) {
+                        if (arr[j][k] > arr[j + 1][k]) {
+                            // Swap elements
+                            int temp = arr[j][k];
+                            arr[j][k] = arr[j + 1][k];
+                            arr[j + 1][k] = temp;
+                        }
+                    }
+                }
+            }
         }
         return arr;
     }

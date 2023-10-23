@@ -3,16 +3,19 @@ package com.epam.conditions;
 public class TriangleSidesValidator {
 
     public void validate(double firstSide, double secondSide, double thirdSide) {
-        if (isValidTriangle(firstSide, secondSide, thirdSide)) {
-            System.out.println("This is a valid triangle");
+        if (isValidTriangleSide(firstSide) && isValidTriangleSide(secondSide) && isValidTriangleSide(thirdSide)) {
+            if ((firstSide + secondSide > thirdSide) && (firstSide + thirdSide > secondSide) && (secondSide + thirdSide > firstSide)) {
+                System.out.println("this is a valid triangle");
+            } else {
+                System.out.println("it's not a triangle");
+            }
         } else {
-            System.out.println("It's not a triangle");
+            System.out.println("it's not a triangle");
         }
     }
 
-    private boolean isValidTriangle(double a, double b, double c) {
-        // Triangle inequality theorem: the sum of the lengths of any two sides of a triangle must be greater than the length of the remaining side
-        return a + b > c && a + c > b && b + c > a;
+    private boolean isValidTriangleSide(double side) {
+        return side > 0;
     }
 
 }

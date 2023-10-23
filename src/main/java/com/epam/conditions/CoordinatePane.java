@@ -4,17 +4,15 @@ public class CoordinatePane {
 
     public void printQuadrant(int x, int y) {
         if (x > 0 && y > 0) {
-            System.out.println("First quadrant");
+            System.out.println("first");
         } else if (x < 0 && y > 0) {
-            System.out.println("Second quadrant");
+            System.out.println("second");
         } else if (x < 0 && y < 0) {
-            System.out.println("Third quadrant");
+            System.out.println("third");
         } else if (x > 0 && y < 0) {
-            System.out.println("Fourth quadrant");
-        } else if (x == 0 && y == 0) {
-            System.out.println("Zero point");
+            System.out.println("fourth");
         } else {
-            System.out.println("On the axis");
+            System.out.println("zero");
         }
     }
 
